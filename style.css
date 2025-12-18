@@ -1,0 +1,148 @@
+body {
+	font-family: sans-serif;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: #faf8f6;
+	overflow: hidden;
+}
+
+.game-container {
+	width: 335px;
+	height: 335px;
+	border: 1px solid #e6e8f0;
+	background: #ffffff;
+  box-shadow:
+    inset 0 0 0 1px #e6e8f0,
+    0 14px 32px rgba(0, 0, 0, 0.08);
+}
+
+.game-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 5px;
+}
+
+.grid-cell {
+	width: 80px;
+	height: 80px;
+	background-color: #f4f4f4;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 22px;
+}
+
+.score-container {
+		display: flex;
+		justify-content: space-between;
+		width: 335px;
+		margin-bottom: 20px;
+}
+
+.game-over {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(20, 20, 30, 0.9);
+	color: #ff7fbd;
+  text-shadow: 0 0 12px rgba(255, 127, 189, 0.7);
+	font-size: 70px;
+	padding: 200px;
+}
+
+.restart-game {
+	margin-top: 50px;
+	background: #ff6f61;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow:
+    0 0 6px rgba(255, 111, 97, 0.6),
+    0 0 14px rgba(255, 111, 97, 0.5),
+    0 0 28px rgba(255, 111, 97, 0.35);
+  transition: 
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.restart-game:hover {
+	background-color: #e85b50;
+}
+
+.grid-cell [data-value] {
+	transition: background-color .2s;
+}
+
+.new-tile {
+	animation: spawntile .3s;
+}
+
+@keyframes spawntile {
+	from {
+		opacity: 0;
+		transform: scale(.5);
+	} to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.grid-cell[data-value="2"] {
+	background-color: #ffb3b3;
+}
+
+.grid-cell[data-value="4"] {
+	background-color: #99c9ff;
+}
+.grid-cell[data-value="8"] {
+	background-color: #85e6a1;
+}
+.grid-cell[data-value="16"] {
+	background-color: #ffd866;
+}
+
+.grid-cell[data-value="32"] {
+	background-color: #ff9f6e;
+}
+
+.grid-cell[data-value="64"] {
+	background-color: #66b5ff;
+}
+
+.grid-cell[data-value="128"] {
+	background-color: #ffcc33;
+}
+
+.grid-cell[data-value="256"] {
+	background-color: #52e0d1;
+}
+
+.grid-cell[data-value="512"] {
+	background-color: #ff7fbd;
+}
+
+.grid-cell[data-value="1024"] {
+	background-color: #a48cff;
+}
+
+.grid-cell[data-value="2048"] {
+	background-color: #ff6f61;
+}
+
+.grid-cell[data-value="4096"] {
+	background-color: #8c8c8c;
+}
