@@ -147,4 +147,41 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 	document.querySelector('.restart-game').addEventListener('click', restartGame);
 	initializeGame();
+
+// Обработка свайпов для мобильных устройств
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchEndX = 0;
+  let touchEndY = 0;
+  const swipeThreshold = 50;
+    document.addEventListener('touchstart', (e) => {
+  const touch = e.changedTouches[0];
+    touchStartX = touch.screenX;
+    touchStartY = touch.screenY;
+  });
+  document.addEventListener('touchend', (e) => {
+    const touch = e.changedTouches[0];
+    touchEndX = touch.screenX;
+    touchEndY = touch.screenY;
+    handleSwipe();
+  });
+  function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    if (Math.abs(deltaX) < swipeThreshold && Math.abs(deltaY) < swipeThreshold) {
+        // Свайп слишком короткий — игнорируем
+        return;
+    }
+   if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        // горизонтальный свайп
+        if (deltaX > 0) move('ArrowRight');
+        else move('ArrowLeft');
+   } else {
+        // вертикальный свайп
+        if (deltaY > 0) move('ArrowDown');
+        else move('ArrowUp');
+    }
+}
+document.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 });
